@@ -1,36 +1,30 @@
 package com.user.model;
 
-import com.user.controller.dto.UserDto;
-
+import javax.persistence.*;
 import java.util.Date;
-import java.util.UUID;
 
+@Entity
+@Table(name = "usuario")
 public class User {
-    private String idUser;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
+    private Long idUser;
+    @Column(name = "nombre")
     private String name;
+    @Column(name = "apellido")
     private String lastname;
+    @Column(name = "identificacion")
     private String identification;
+    @Column(name = "fecha_nacimiento")
     private Date birthDate;
     private String email;
 
-    public User(String name, String lastname, String identification, Date birthDate, String email) {
-        this.idUser = UUID.randomUUID().toString();
-        this.name = name;
-        this.lastname = lastname;
-        this.identification = identification;
-        this.birthDate = birthDate;
-        this.email = email;
-    }
-
-    public User(UserDto userDto) {
-        this(userDto.getName(),userDto.getLastname(), userDto.getIdentification(), userDto.getBirthDate(),userDto.getEmail());
-    }
-
-    public String getIdUser() {
+    public Long getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(String idUser) {
+    public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
 

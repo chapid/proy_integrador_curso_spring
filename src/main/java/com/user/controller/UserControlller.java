@@ -3,9 +3,10 @@ package com.user.controller;
 import com.user.controller.dto.UserDto;
 import com.user.model.User;
 import com.user.service.IUserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,27 +20,27 @@ public class UserControlller {
     }
 
     @PostMapping("")
-    public User createUser(@RequestBody UserDto userDto){
-        return iUserService.createUser(new User(userDto));
+    public User createUser(@RequestBody User usuario){
+        return iUserService.createUser(usuario);
     }
 
     @GetMapping("")
-    public List<User> findAll(){
-        return iUserService.findAllUsers();
+    public ResponseEntity<Iterable<User>> findAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(iUserService.findAllUsers());
     }
 
     @GetMapping("{idUser}")
-    public Optional<User> findById(@PathVariable String idUser){
+    public Optional<User> findById(@PathVariable Long idUser){
         return iUserService.findByIdUser(idUser);
     }
 
     @PutMapping("{idUser}")
-    public User updateUser(@PathVariable String idUser, @RequestBody UserDto userDto){
-        return iUserService.updateUser(idUser,new User(userDto));
+    public User updateUser(@RequestBody User usuario){
+        return iUserService.updateUser(usuario);
     }
 
     @DeleteMapping("{idUser}")
-    public String delete(@PathVariable String idUser){
-        return iUserService.deleteUser(idUser);
+    public void delete(@PathVariable Long idUser){
+        iUserService.deleteUser(idUser);
     }
 }
