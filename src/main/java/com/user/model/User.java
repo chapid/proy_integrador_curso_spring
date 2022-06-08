@@ -1,5 +1,7 @@
 package com.user.model;
 
+import com.user.controller.dto.UserDto;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,6 +21,18 @@ public class User {
     @Column(name = "fecha_nacimiento")
     private Date birthDate;
     private String email;
+
+    public User(String name, String lastname, String identification, Date birthDate, String email) {
+        this.name = name;
+        this.lastname = lastname;
+        this.identification = identification;
+        this.birthDate = birthDate;
+        this.email = email;
+    }
+
+    public User(UserDto userDto) {
+        this(userDto.getName(), userDto.getLastname(),userDto.getIdentification(),userDto.getBirthDate(),userDto.getEmail());
+    }
 
     public Long getIdUser() {
         return idUser;

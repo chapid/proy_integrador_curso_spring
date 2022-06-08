@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "725f913a-5019-4e2d-9997-cb03c8596e9f",
+		"name": "curso springboot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9886089"
+	},
+	"item": [
+		{
+			"name": "dogs",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "agegar usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Carlos 6\",\r\n    \"lastname\":\"Chapid\",\r\n    \"identification\":\"123456\",\r\n    \"birthDate\":\"1990-12-02\",\r\n    \"email\":\"test@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar usuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Melizza\",\r\n    \"lastname\":\"Cely\",\r\n    \"identification\":\"123456\",\r\n    \"birthDate\":\"1990-12-2\",\r\n    \"email\":\"test@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar usuario por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Melizza\",\r\n    \"lastname\":\"Cely\",\r\n    \"identification\":\"123456\",\r\n    \"birthDate\":\"1990-12-2\",\r\n    \"email\":\"test@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/users/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editar usuario por id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"idUser\": 4,\r\n        \"name\": \"Carlos Cuarto\",\r\n        \"lastname\": \"Chapid\",\r\n        \"identification\": \"123456\",\r\n        \"birthDate\": \"1990-12-02T00:00:00.000+00:00\",\r\n        \"email\": \"test@test.com\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/users/294f1c50-a8c9-474a-be3e-5320877a4c5b",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"294f1c50-a8c9-474a-be3e-5320877a4c5b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar usuaio",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idUser\": 2,\r\n    \"name\": \"Carlos 9\",\r\n    \"lastname\": \"Chapid 10\",\r\n    \"identification\": \"123456\",\r\n    \"birthDate\": \"1990-12-02T00:00:00.000+00:00\",\r\n    \"email\": \"test@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/v1/users/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
