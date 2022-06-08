@@ -20,8 +20,8 @@ public class UserControlller {
     }
 
     @PostMapping("")
-    public User createUser(@RequestBody User usuario){
-        return iUserService.createUser(usuario);
+    public User createUser(@RequestBody UserDto userDto){
+        return iUserService.createUser(new User(userDto));
     }
 
     @GetMapping("")
