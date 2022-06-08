@@ -18,7 +18,17 @@ public class User {
     private String identification;
     @Column(name = "fecha_nacimiento")
     private Date birthDate;
+    @Column(name = "email")
     private String email;
+
+    public User(Long idUser, String name, String lastname, String identification, Date birthDate, String email) {
+        this.idUser = idUser;
+        this.name = name;
+        this.lastname = lastname;
+        this.identification = identification;
+        this.birthDate = birthDate;
+        this.email = email;
+    }
 
     public Long getIdUser() {
         return idUser;
