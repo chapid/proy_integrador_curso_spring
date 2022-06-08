@@ -7,7 +7,6 @@ import com.user.service.IBookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
 @RestController
@@ -21,8 +20,8 @@ public class BookController {
     }
 
     @PostMapping("")
-    public Book createBook(@RequestBody Book objBookDto){
-        return objBookServices.createBook(objBookDto);
+    public Book createBook(@RequestBody BookDto objBookDto){
+        return objBookServices.createBook(new Book(objBookDto));
     }
 
     @GetMapping("")

@@ -10,7 +10,8 @@ import java.util.UUID;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idBook")
+    //no es necesario cuando tiene el mismo nombre
+    @Column(name = "id_book")
     private Long idBook;
 
     @Column(name = "name")
@@ -25,17 +26,17 @@ public class Book {
     @Column(name = "age")
     private int ageBook;
 
-    public Book(String nameBook, String categoryBook, String authorBook, int ageBook, Long idBook) {
-        this.idBook = idBook;
+    public Book(){}
+    public Book(String nameBook, String categoryBook, String authorBook, int ageBook) {
         this.nameBook = nameBook;
         this.categoryBook = categoryBook;
         this.authorBook = authorBook;
         this.ageBook = ageBook;
     }
 
-    /*public Book(BookDto objBookDto) {
-    //    this(objBookDto.getNameBook(), objBookDto.getCategoryBook(), objBookDto.getAuthorBook(), objBookDto.getAgeBook());
-    */
+    public Book(BookDto objBookDto) {
+        this(objBookDto.getNameBook(), objBookDto.getCategoryBook(), objBookDto.getAuthorBook(), objBookDto.getAgeBook());
+    }
 
     public void setIdBook(Long idBook) {
         this.idBook = idBook;

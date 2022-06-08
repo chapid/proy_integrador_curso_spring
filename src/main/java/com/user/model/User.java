@@ -23,6 +23,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    public User(){}
+
     public User(String name, String lastname, String identification, Date birthDate, String email) {
         this.name = name;
         this.lastname = lastname;
