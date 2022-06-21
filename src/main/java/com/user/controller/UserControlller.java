@@ -3,6 +3,8 @@ package com.user.controller;
 import com.user.controller.dto.UserDto;
 import com.user.model.User;
 import com.user.service.IUserService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,7 @@ public class UserControlller {
         return iUserService.createUser(new User(userDto));
     }
 
+    @ApiOperation(value = "Consultar todos los usuarios", authorizations = { @Authorization(value="JWT") })
     @GetMapping("")
     public ResponseEntity<Iterable<User>> findAll(){
         return ResponseEntity.status(HttpStatus.OK).body(iUserService.findAllUsers());
