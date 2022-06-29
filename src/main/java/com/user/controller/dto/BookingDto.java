@@ -1,49 +1,16 @@
-package com.user.model;
+package com.user.controller.dto;
 
-import com.user.controller.dto.BookDto;
-
-import javax.persistence.*;
-import java.util.UUID;
-
-@Entity
-@Table(name = "tbl_book")
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //no es necesario cuando tiene el mismo nombre
-    @Column(name = "id_book")
-    private Long idBook;
-
-    @Column(name = "name")
+public class BookingDto {
     private String nameBook;
-
-    @Column(name = "category")
     private String categoryBook;
-
-    @Column(name = "author")
     private String authorBook;
-
-    @Column(name = "age")
     private int ageBook;
 
-    public Book(){}
-    public Book(String nameBook, String categoryBook, String authorBook, int ageBook) {
+    public BookingDto(String nameBook, String categoryBook, String authorBook, int ageBook) {
         this.nameBook = nameBook;
         this.categoryBook = categoryBook;
         this.authorBook = authorBook;
         this.ageBook = ageBook;
-    }
-
-    public Book(BookDto objBookDto) {
-        this(objBookDto.getNameBook(), objBookDto.getCategoryBook(), objBookDto.getAuthorBook(), objBookDto.getAgeBook());
-    }
-
-    public void setIdBook(Long idBook) {
-        this.idBook = idBook;
-    }
-
-    public Long getIdBook() {
-        return idBook;
     }
 
     public String getNameBook() {
