@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -43,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // (2)
                 .authorizeRequests()
                 .antMatchers("/v1/users/**").hasRole("RCARLOS")
-                .antMatchers("/v1/books/**").hasRole("RJUANES")
+                .antMatchers("/v2/booking/**").hasRole("RJUANES")
                 .antMatchers("/v1/publico/**").permitAll()
                 .anyRequest().authenticated()
                 .and().cors()
@@ -57,44 +58,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(usuarioDetailsService);
-
-    /*
-    auth
-        .inMemoryAuthentication()
-        .withUser("jcabelloc").password("{noop}" + "secreto").roles("USER")
-        .and()
-        .withUser("mlopez").password("{noop}" + "secreto").roles("ADMIN");
-     */
     }
 
-
-
-    /*
-     * (1) Spring Security’s HTTP Basic Authentication support in is enabled by default. However, as soon as any servlet
-     * based configuration is provided, HTTP Basic must be explicitly provided.
-     * (2) If our stateless API uses token-based authentication, such as JWT, we don't need CSRF protection
-     *
-     *
-     * */
+    @Override
+    public void configure(WebSecurity web)throws Exception {
+        web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui",
+                "/swagger-resources/**", "/configuration/security","/swagger-ui.html",
+                "/swagger-ui/**", "/webjars/**");
+    }
 }
-
-
-/*
-    @Override
-    protected void configure (HttpSecurity http) throws Exception{
-        http
-                .httpBasic(withDefaults())
-                .authorizeRequests()
-                .antMatchers("/v1/users/**").hasRole("RCARLOS")
-                .antMatchers("/v1/books/**").hasRole("RJUANES")
-                .anyRequest().authenticated();
-    }
-    @Override
-    protected void configure (AuthenticationManagerBuilder auth) throws Exception{
-        auth
-                .inMemoryAuthentication()
-                .withUser("cchapid").password("{noop}"+"carlos123").roles("RCARLOS")
-                .and()
-                .withUser("jcardona").password("{noop}"+"juanes123").roles("RJUANES");
-    }
- */

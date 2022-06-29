@@ -3,6 +3,8 @@ package com.user.controller;
 import com.user.controller.dto.UserDto;
 import com.user.model.User;
 import com.user.service.IUserService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,7 @@ public class UserControlller {
         this.iUserService = iUserService;
     }
 
+    @ApiOperation(value="Crear usuario",authorizations = {@Authorization(value = "JWT")})
     @PostMapping("")
     public User createUser(@RequestBody UserDto userDto){
         return iUserService.createUser(new User(userDto));
